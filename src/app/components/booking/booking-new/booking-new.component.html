@@ -1,0 +1,65 @@
+<div class="container">
+    <h1>Cadastro de Reserva</h1>
+    <mat-grid-list cols="2" rowHeight="100px">
+        <form [formGroup]="form">
+            <mat-grid-tile>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Escolha o intervalo da reserva</mat-label>
+                        <mat-date-range-input [rangePicker]="picker ">
+                            <input matStartDate placeholder="Data Início " formControlName="checkin">
+                            <input matEndDate placeholder="Data Fim " formControlName="checkout">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker "></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker touchUi closedStream></mat-date-range-picker>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Status da Reserva</mat-label>
+                        <mat-select formControlName="status" required>
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let status of status" [value]="status.tipo">
+                                {{status.tipo}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="form.hasError('required')">Escolha um status</mat-error>
+                        <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
+                    </mat-form-field>
+                </p>
+            </mat-grid-tile>
+
+        </form>
+        <mat-grid-tile>
+            <form [formGroup]="form2">
+                <mat-form-field appearance="fill">
+                    <mat-label>Digite o nome do Associado</mat-label>
+                    <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="associado" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+
+            <button mat-raised-button (click)="newBooking() ">
+                OK
+            </button>
+        </mat-grid-tile>
+
+
+
+        <mat-grid-tile>
+            <div *ngIf="isRange ">
+                <p>Deseja criar uma reserva com</p>
+                <span style="font-size: x-large; ">check-IN</span> para
+                <span style="font-size: x-large; ">{{ form.value.checkin | date:'dd / MM / yyyy' }}</span>
+                <p>e</p>
+                <span style="font-size: x-large; ">check-OUT</span> para <span style="font-size: x-large; ">
+                    {{ form.value.checkout | date:'dd / MM/ yyyy' }}</span>?
+            </div>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+</div>

@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg bg-info">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" [routerLink]="['./']">SERJUSPI_SG</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="#navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a [routerLink]="['./']" routerLinkActive="router-link-active" class="nav-link">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:;" class="nav-link">
+                        Profile
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Associados
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" [routerLink]="['associados']" routerLinkActive="router-link-active">
+                            Associados
+                        </a>
+                        <a class="dropdown-item" [routerLink]="['associados/associado-new']" routerLinkActive="router-link-active">
+                            Cadastrar Associado
+                        </a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reservas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" [routerLink]="['bookings']" routerLinkActive="router-link-active">
+                            Reservas
+                        </a>
+                        <a class="dropdown-item" [routerLink]="['bookings/booking-new']" routerLinkActive="router-link-active">
+                            Cadastrar Reserva
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:;" class="nav-link" (click)="logout()">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

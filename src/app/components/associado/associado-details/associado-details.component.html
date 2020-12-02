@@ -1,0 +1,76 @@
+<div class="container">
+    <h1>Cadastro de Associado</h1>
+    <form [formGroup]="form">
+        <mat-form-field class="example-full-width col-sm-6" appearance="fill">
+            <mat-label>Digite o nome do associado</mat-label>
+            <input matInput id="name" formControlName="name" name="name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width col-sm-4" appearance="fill">
+            <mat-label>Digite o email do associado</mat-label>
+            <input matInput id="email" formControlName="email" name="email">
+        </mat-form-field>
+        <p></p>
+        <mat-form-field class="example-full-width col-sm-3" appearance="fill">
+            <mat-label>Digite a matrícula JF do associado</mat-label>
+            <input matInput id="matricula" formControlName="matricula" name="matricula">
+        </mat-form-field>
+        <mat-form-field class="example-full-width col-sm-3" appearance="fill">
+            <mat-label>Digite a data de nascimento do associado</mat-label>
+            <input matInput id="dt_born" formControlName="dt_born" [matDatepicker]="picker" name="dt_born">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="example-full-width col-sm-3" appearance="fill">
+            <mat-label>Digite a matrícula do associado</mat-label>
+            <input matInput id="mat" formControlName="mat" name="mat">
+        </mat-form-field>
+        <mat-form-field class="example-full-width col-sm-3" appearance="fill">
+            <mat-label>Digite o cpf do associado</mat-label>
+            <input matInput id="cpf" formControlName="cpf" name="cpf">
+        </mat-form-field>
+        <mat-form-field class="example-full-width col-sm-3" appearance="fill">
+            <mat-label>Digite o rg do associado</mat-label>
+            <input matInput id="rg" formControlName="rg" name="rg">
+        </mat-form-field>
+        <div formGroupName="Addresses">
+            <mat-form-field class="example-full-width col-sm-6" appearance="fill">
+                <mat-label>Endereço</mat-label>
+                <input matInput id="description" formControlName="description">
+            </mat-form-field>
+            <mat-form-field class="example-full-width col-sm-6" appearance="fill">
+                <mat-label>Complemento</mat-label>
+                <input matInput id="complement" formControlName="complement">
+            </mat-form-field>
+            <mat-form-field class="example-full-width col-sm-2" appearance="fill">
+                <mat-label>Número</mat-label>
+                <input matInput id="number" formControlName="number">
+            </mat-form-field>
+            <mat-form-field class="example-full-width col-sm-2" appearance="fill">
+                <mat-label>CEP</mat-label>
+                <input matInput id="zipcode" formControlName="zipcode">
+            </mat-form-field>
+            <mat-form-field class="example-full-width col-sm-6" appearance="fill">
+                <mat-label>Bairro</mat-label>
+                <input matInput id="neighborhood" formControlName="neighborhood">
+            </mat-form-field>
+            <mat-form-field class="example-full-width col-sm-2" appearance="fill">
+                <mat-label>Cidade</mat-label>
+                <input matInput id="city" formControlName="city">
+            </mat-form-field>
+            <mat-form-field class="example-full-width col-sm-1" appearance="fill">
+                <mat-label>Estado</mat-label>
+                <input matInput id="state" formControlName="state">
+            </mat-form-field>
+        </div>
+        <p>
+            <button mat-raised-button type="button" (click)="updateAssoc()">atualizar</button>
+        </p>
+        <p>
+            <button mat-raised-button type="button" (click)="openDialog()">excluir</button>
+        </p>
+    </form>
+
+    <div *ngIf="submitted">
+        <p>Tutorial was updated successfully</p>
+    </div>
+</div>

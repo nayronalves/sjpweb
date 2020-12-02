@@ -1,0 +1,100 @@
+<nav class="navbar fixed-top navbar-expand-lg flex-column flex-md-row">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="/">
+                <b>S E R J U S P I</b>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="material-icons">apps</i> Components
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        <a href="../presentation.html" class="dropdown-item">
+                            <i class="material-icons">line_style</i> Presentation
+                        </a>
+                        <a href="../index.html" class="dropdown-item">
+                            <i class="material-icons">layers</i> All Components
+                        </a>
+                        <a href="http://demos.creative-tim.com/material-kit-pro/docs/2.1/getting-started/introduction.html" class="dropdown-item">
+                            <i class="material-icons">content_paste</i> Documentation
+                        </a>
+                    </div>
+                </li>
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="material-icons">view_day</i> Sections
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        <a href="../sections.html#headers" class="dropdown-item">
+                            <i class="material-icons">dns</i> Headers
+                        </a>
+                        <a href="../sections.html#features" class="dropdown-item">
+                            <i class="material-icons">build</i> Features
+                        </a>
+                        <a href="../sections.html#blogs" class="dropdown-item">
+                            <i class="material-icons">list</i> Blogs
+                        </a>
+                        <a href="../sections.html#teams" class="dropdown-item">
+                            <i class="material-icons">people</i> Teams
+                        </a>
+                        <a href="../sections.html#projects" class="dropdown-item">
+                            <i class="material-icons">assignment</i> Projects
+                        </a>
+                        <a href="../sections.html#pricing" class="dropdown-item">
+                            <i class="material-icons">monetization_on</i> Pricing
+                        </a>
+                        <a href="../sections.html#testimonials" class="dropdown-item">
+                            <i class="material-icons">chat</i> Testimonials
+                        </a>
+                        <a href="../sections.html#contactus" class="dropdown-item">
+                            <i class="material-icons">call</i> Contacts
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active">
+                        <i class="material-icons">login</i> SG-SERJUSPI
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="section" id="calendar">
+    <div class="container">
+        <!-- <h1>Solicitar Reserva</h1>
+        <form [formGroup]="form" (submit)="submit()">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Escolha o intervalo da reserva</mat-label>
+            <mat-date-range-input [rangePicker]="picker ">
+                <input matStartDate placeholder="Data Início " formControlName="checkin">
+                <input matEndDate placeholder="Data Fim " formControlName="checkout">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker "></mat-datepicker-toggle>
+            <mat-date-range-picker #picker touchUi closedStream></mat-date-range-picker>
+        </mat-form-field>
+
+        <p>
+            <button mat-raised-button type="submit">ok</button>
+        </p>
+        <p id="values"></p>
+        </form> -->
+        <!-- <div style='display: none;' [show]="loading | async">
+        </div> -->
+        <div>
+            <full-calendar [options]='calendarOptions'></full-calendar>
+        </div>
+    </div>
+</div>

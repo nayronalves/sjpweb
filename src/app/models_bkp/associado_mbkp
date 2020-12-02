@@ -1,0 +1,7 @@
+export interface Associado {
+  id: number;
+  codServ: string;
+  nomeServ: string;
+  createdAt: string;
+  updatedAt: string;
+  }

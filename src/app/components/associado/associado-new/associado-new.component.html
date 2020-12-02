@@ -1,0 +1,179 @@
+<div class="container">
+    <h1>Cadastro de Associado</h1>
+    <!-- <form [formGroup]="form">
+        <mat-form-field class="example-full-width col-sm-6" appearance="fill">
+            <mat-label>Digite o nome do associado</mat-label>
+            <input matInput formControlName="name" name="name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width col-sm-3" appearance="fill">
+            <mat-label>Digite o email do associado</mat-label>
+            <input matInput formControlName="email" name="email">
+        </mat-form-field>
+        <p></p>
+        <mat-form-field class="example-full-width col-sm-2" appearance="fill">
+            <mat-label>Digite a matrícula do associado</mat-label>
+            <input matInput formControlName="matricula" name="matricula">
+        </mat-form-field>
+        <p>
+            <button mat-raised-button (click)="newAssoc()">Ok</button>
+        </p>
+        <div *ngIf="submitted">
+            <h4>You submitted successfully!</h4>
+            <button class="btn btn-success" (click)="newAssociado()">Add</button>
+        </div>
+    </form> -->
+
+    <mat-accordion class="example-headers-align">
+        <form [formGroup]="form">
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Dados Pessoais
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Insira os dados pessoais do associado
+                        <mat-icon>account_circle</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field class="example-full-width col-sm-6">
+                    <mat-label>Nome Completo</mat-label>
+                    <input matInput formControlName="name" name="name">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width col-sm-4">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="joao@example.com" required>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width col-sm-3">
+                    <mat-label>Matrícula JF</mat-label>
+                    <input matInput formControlName="matricula" name="matricula">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width col-sm-3">
+                    <mat-label>CPF</mat-label>
+                    <input matInput formControlName="cpf" name="cpf" type="text" mask="CPF_CNPJ" maxlength="14">
+                    <mat-hint>Somente números</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width col-sm-3">
+                    <mat-label>RG</mat-label>
+                    <input matInput formControlName="rg" name="rg">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width col-sm-3">
+                    <mat-label>Data de Nascimento</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dt_born">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <!-- <mat-form-field class="example-full-width col-sm-3">
+                    <mat-label>Data de Nascimento</mat-label>
+                    <input matInput type="date" formControlName="dt_born" name="dt_born">
+                </mat-form-field> -->
+
+                <mat-form-field class="example-full-width col-sm-3">
+                    <mat-label>Matrícula</mat-label>
+                    <input matInput formControlName="mat" name="mat">
+                </mat-form-field>
+
+                <mat-action-row>
+                    <button mat-button color="primary" (click)="nextStep()">Próximo</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+            <div formGroupName="Addresses">
+                <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Endereço
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Insira aqui o endereço completo do associado
+                            <mat-icon>map</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-form-field class="example-full-width col-sm-6">
+                        <mat-label>Descrição</mat-label>
+                        <input matInput formControlName="description">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width col-sm-2">
+                        <mat-label>Número</mat-label>
+                        <input matInput formControlName="number">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width col-sm-2">
+                        <mat-label>CEP</mat-label>
+                        <input matInput formControlName="zipcode">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width col-sm-6">
+                        <mat-label>Bairro</mat-label>
+                        <input matInput formControlName="neighborhood">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width col-sm-2">
+                        <mat-label>Cidade</mat-label>
+                        <input matInput formControlName="city">
+                    </mat-form-field>
+
+
+                    <!-- <mat-list>
+                        <mat-list-item *ngFor="let message of messages">
+                          <h3 matLine> {{message.from}} </h3>
+                          <p matLine>
+                            <span> {{message.subject}} </span>
+                            <span class="demo-2"> -- {{message.content}} </span>
+                          </p>
+                        </mat-list-item>
+                      </mat-list> -->
+
+
+                    <mat-form-field class="example-full-width col-sm-1">
+                        <mat-label>Estado</mat-label>
+                        <mat-select formControlName="state">
+                            <mat-option *ngFor="let state of states" value="{{state}}">{{state}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <!-- <mat-form-field class="example-full-width col-sm-1 ">
+                        <mat-label>Estado</mat-label>
+                        <input matInput formControlName="state ">
+                    </mat-form-field> -->
+
+                    <mat-action-row>
+                        <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+                        <button mat-button color="primary" (click)="newAssoc()">Cadastrar</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </div>
+        </form>
+
+        <!-- <mat-expansion-panel [expanded]="step===2 " (opened)="setStep(2) " hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Day of the trip
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Inform the date you wish to travel
+                        <mat-icon>date_range</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field>
+                    <mat-label>Date</mat-label>
+                    <input matInput [matDatepicker]="picker " (focus)="picker.open() " readonly>
+                </mat-form-field>
+                <mat-datepicker #picker></mat-datepicker>
+
+                <mat-action-row>
+                    <button mat-button color="warn " (click)="prevStep() ">Anterior</button>
+                    <button mat-button color="primary " (click)="nextStep() ">Fim</button>
+                </mat-action-row>
+            </mat-expansion-panel> -->
+    </mat-accordion>
+</div>

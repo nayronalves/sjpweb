@@ -1,0 +1,9 @@
+export class Booking {
+    id: number;
+    checkin: Date;
+    checkout: Date;
+    status: string;
+    associado_id: number;     
+    createdAt: Date;
+    updatedAt:Date;
+}

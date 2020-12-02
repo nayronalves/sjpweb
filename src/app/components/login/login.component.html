@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+            <div class="card card-login">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="card-body">
+                        <div class="input-group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Fill form field</mat-label>
+                                <input matInput placeholder="Placeholder" formControlName="username">
+                                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                                <mat-hint>Hint</mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="input-group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Fill form field</mat-label>
+                                <input matInput placeholder="Placeholder" formControlName="password">
+                                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                                <mat-hint>Hint</mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="footer text-center">
+                            <button mat-raised-button color="primary" type="submit">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<mat-card class="home mat-elevation-z3">
+    <mat-card-title class="title">Associados</mat-card-title>
+
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Maria" #input>
+    </mat-form-field>
+
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z2 table-hover" matSort>
+        <a href="../associado-details/associado-details.component.html">
+            <ng-container matColumnDef="assid">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+                <mat-cell *matCellDef="let associado"> {{associado.id}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
+                <mat-cell *matCellDef="let associado"> {{associado.name}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="matricula">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Matrícula </mat-header-cell>
+                <mat-cell *matCellDef="let associado"> {{associado.matricula}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="createdAt">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Criado em </mat-header-cell>
+                <mat-cell *matCellDef="let associado"> {{associado.createdAt | date: 'dd/MM/yyyy HH:MM:SS'}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="updatedAt">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Modificado em </mat-header-cell>
+                <mat-cell *matCellDef="let associado"> {{associado.updatedAt | date: 'dd/MM/yyyy HH:MM:SS'}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="info">
+                <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+                <mat-cell *matCellDef="let associado">
+                    <button mat-icon-button routerLink="associado-details/{{associado.id}}" routerLinkActive="router-link-active">
+                        <mat-icon>
+                            info
+                        </mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="update">
+                <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+                <mat-cell *matCellDef="let associado">
+                    <button mat-icon-button (click)="openDialog()">
+                        <mat-icon>
+                            edit
+                        </mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+        </a>
+        <mat-header-row *matHeaderRowDef=" displayedColumns "></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100] "></mat-paginator>
+    <!-- <button mat-raised-button color="primary " [routerLink]="[ '/homesys/associados-new'] " routerLinkActive="router-link-active ">Cadastrar Associado</button> -->
+</mat-card>

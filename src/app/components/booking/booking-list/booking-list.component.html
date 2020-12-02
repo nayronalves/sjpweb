@@ -1,0 +1,57 @@
+<mat-card class="home mat-elevation-z3">
+    <mat-card-title class="title">Reservas</mat-card-title>
+
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Maria" #input>
+    </mat-form-field>
+
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z2" matSort>
+
+        <ng-container matColumnDef="bookid">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="checkin">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Check_IN </mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.checkin | date: 'dd/MM/yyyy HH:MM:SS'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="checkout">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Check_OUT </mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.checkout | date: 'dd/MM/yyyy HH:MM:SS'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef="let booking" mat-sort-header> Status </mat-header-cell>
+            <mat-cell *matCellDef="let booking">
+                <span class="badge badge-pill badge-success" *ngIf="(booking.status == 'confirmada')">
+                    {{ booking.status }}
+                </span>
+                <span class="badge badge-pill badge-danger" *ngIf="(booking.status == 'cancelada')">
+                    {{ booking.status }}
+                </span>
+                <span class="badge badge-pill badge-info" *ngIf="(booking.status == 'em análise')">
+                    {{ booking.status }}
+                </span>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="associado.name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Associado </mat-header-cell>
+            <mat-cell *matCellDef="let booking">
+                {{booking.Associado.name}} ({{booking.AssociadoId}})
+            </mat-cell>
+        </ng-container>
+        <!-- <ng-container matColumnDef="info">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let booking">
+                <button mat-icon-button>
+                    <mat-icon>info</mat-icon>
+                </button> </mat-cell>
+        </ng-container> -->
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <button mat-raised-button color="primary">Cadastrar Reserva</button>
+</mat-card>

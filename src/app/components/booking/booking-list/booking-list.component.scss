@@ -1,0 +1,20 @@
+.mat-column-bookid {
+    flex: 0 0 60px;
+}
+
+.mat-column-name {
+    min-width: 280px;
+}
+
+.mat-column-checkin {
+    max-width: 175px;
+}
+
+.mat-column-checkout {
+    max-width: 175px;
+}
+
+.mat-column-status {
+    max-width: 100px;
+    min-width: 80px;
+}
